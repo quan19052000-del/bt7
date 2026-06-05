@@ -1,0 +1,36 @@
+@model IEnumerable<BookManagement.Models.Book>
+
+@{
+    ViewData["Title"] = "Danh sách sách";
+}
+
+<h1>Danh sách sách</h1>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">@TempData["Message"]</div>
+}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var b in Model)
+    {
+        <tr>
+            <td>@b.Id</td>
+            <td>@b.Name</td>
+            <td>@b.Price</td>
+            <td><a class="btn btn-sm btn-primary" href="/Book/Detail/@b.Id">Detail</a></td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<a class="btn btn-success" href="/Book/Create">Add New</a>
